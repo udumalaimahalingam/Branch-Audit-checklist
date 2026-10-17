@@ -1,5 +1,5 @@
 // Offline cache for Farm SOP Audit. Bump VERSION whenever index.html is updated.
-const VERSION = "farm-audit-v3";
+const VERSION = "farm-audit-v5";
 const LOCAL = ["./", "./index.html", "./single.html", "./manifest.json", "./icon-192.png", "./icon-512.png"];
 const CDN = [
   "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css",

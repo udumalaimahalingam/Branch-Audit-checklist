@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#123b2a">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<title>Suguna Foods Pvt Ltd | Broiler Farm SOP Audit</title>
+<!-- Single HTML file; these libraries load from CDNs and require internet access. -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+
+:root{--brand:#14532d;--brand2:#1f7a46;--accent:#e8b931;--ink:#17251d;--muted:#65746a;--surface:#fff;--page:#f3f6f3;--line:#dfe7e0}
+
+*{box-sizing:border-box}body{background:var(--page);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:14px}
+
+body.dark{--ink:#edf5ef;--muted:#b5c5b9;--surface:#17231b;--page:#101812;--line:#34463a}
+
+.topbar{background:linear-gradient(120deg,#103d27,#1d6940);color:white;border-bottom:4px solid var(--accent)}
+
+.brand-logo{width:auto;height:84px;max-width:150px;object-fit:contain;background:#fff;border-radius:12px;padding:5px}.logo-placeholder{width:64px;height:64px;border-radius:12px;background:#fff;color:var(--brand);display:grid;place-items:center;font-size:11px;font-weight:800;text-align:center}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:15px;box-shadow:0 4px 16px #173d2610;color:var(--ink)}.card-header{background:transparent;border-bottom:1px solid var(--line);font-weight:750}
+
+.form-label{font-weight:650;color:var(--ink);margin-bottom:.3rem}.form-control,.form-select{border-color:var(--line);background:var(--surface);color:var(--ink);min-height:40px}.form-control:focus,.form-select:focus{border-color:var(--brand2);box-shadow:0 0 0 .2rem #1f7a4620}
+
+.kpi{border:0;color:#fff;min-height:106px;background:linear-gradient(135deg,#14532d,#247a48)}.kpi.gold{background:linear-gradient(135deg,#866313,#c69b25)}.kpi.blue{background:linear-gradient(135deg,#164e63,#27839c)}.kpi.red{background:linear-gradient(135deg,#842b2b,#c34b43)}.kpi .value{font-size:1.65rem;font-weight:800;line-height:1.25}.kpi .label{opacity:.9;font-size:.8rem}
+
+.section-title{font-weight:800;color:var(--brand2)}body.dark .section-title{color:#80d69d}
+
+.accordion-item{background:var(--surface);border-color:var(--line);color:var(--ink)}.accordion-button{background:var(--surface);color:var(--ink);font-weight:750}.accordion-button:not(.collapsed){background:#e9f5ec;color:#14532d;box-shadow:none}body.dark .accordion-button:not(.collapsed){background:#203d2b;color:#b9edc8}
+
+.check-row{display:grid;grid-template-columns:minmax(220px,1fr) 105px 90px minmax(140px,.75fr);gap:10px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line)}.check-row.head{background:#f0f5f0;font-size:11px;text-transform:uppercase;letter-spacing:.04em;font-weight:800}body.dark .check-row.head{background:#213126}
+
+.check-row:last-child{border-bottom:0}.score-input{max-width:100px}.max-score{font-weight:800;color:var(--brand2)}.cat-score{font-size:.8rem;color:var(--muted);font-weight:600}
+
+.dropzone{border:2px dashed #9eb7a4;border-radius:12px;padding:18px;text-align:center;background:#f7fbf7;cursor:pointer}body.dark .dropzone{background:#1b2a20}.photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}.photo-thumb{border:1px solid var(--line);border-radius:10px;padding:7px;min-width:0}.photo-thumb img{width:100%;height:100px;object-fit:cover;border-radius:7px}.photo-thumb .small{overflow-wrap:anywhere}
+
+.signature-box{width:100%;height:150px;border:1px dashed #8da895;border-radius:10px;touch-action:none;background:#fff}.badge-risk{font-size:.8rem}.progress{height:9px;background:#dfe9e1}.btn-brand{background:var(--brand);border-color:var(--brand);color:white}.btn-brand:hover{background:#0d3d20;color:white}.sticky-actions{position:static;margin-top:20px;background:color-mix(in srgb,var(--page) 92%,transparent);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:12px 0}
+
+.required:after{content:" *";color:#c0392b}.small-muted{color:var(--muted);font-size:.82rem}.report-only{display:none}
+
+@media(max-width:760px){.check-row{grid-template-columns:minmax(0,1fr) 82px 60px;gap:7px;padding:9px}.check-row .actual-wrap{grid-column:1/-1;display:flex;gap:8px;align-items:center}.check-row.head{display:none}.score-input{width:78px}.brand-copy h1{font-size:1rem}.brand-copy .sub{font-size:.8rem}.topbar .meta{text-align:left!important}.kpi .value{font-size:1.35rem}}
+
+@media print{body{background:#fff;color:#111;font-size:10pt}.no-print,button,.sticky-actions,.dropzone,.remove-photo{display:none!important}.card{box-shadow:none;break-inside:avoid;border:1px solid #bbb}.topbar{print-color-adjust:exact;-webkit-print-color-adjust:exact}.accordion-collapse{display:block!important}.accordion-button:after{display:none}.form-control,.form-select{border:0!important;padding-left:0!important;min-height:unset!important}.photo-thumb img{height:85px}.report-only{display:block}.page-break{break-before:page}}
+
+.sticky-actions .btn{flex:1 1 150px}.sticky-actions .btn-group-row{width:100%}
+</style>
+</head>
+<body>
+<header class="topbar py-3 mb-4">
+ <div class="container-fluid px-3 px-lg-4">
+  <div class="d-flex flex-wrap align-items-center gap-3">
+   <div class="d-flex align-items-center gap-2"><img id="companyLogo" class="brand-logo" alt="Suguna Foods logo" src="data:image/png;base64,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"></div>
+   <div class="brand-copy flex-grow-1">
+    <div class="fw-bold text-uppercase" style="font-size:1.9rem;line-height:1.2">Suguna Foods Pvt Ltd</div>
+    <h1 class="h4 mb-0 fw-bold">Farm SOP Audit</h1>
+    <div class="sub opacity-75">Farm SOP compliance · Evidence · Performance</div>
+   </div>
+   <div class="meta text-end"><div class="small opacity-75">Report No: <strong id="reportNo"></strong></div><div class="small opacity-75" id="headerDate"></div>
+    <button class="btn btn-sm btn-outline-light mt-2 no-print" id="themeToggle">🌙 Dark mode</button>
+   </div>
+  </div>
+ </div>
+</header>
+
+<main class="container-fluid px-3 px-lg-4 pb-4" id="auditReport">
+ <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-3">
+  <div></div>
+  <div class="d-flex gap-2 flex-wrap no-print"><button class="btn btn-outline-secondary btn-sm" id="gpsBtn">📍 Capture GPS Location</button><span id="gpsStatus" class="small-muted align-self-center"></span></div>
+ </div>
+ <div class="row g-3 mb-3">
+  <div class="col-6 col-xl-3"><div class="card kpi p-3"><div class="label">TOTAL SCORE</div><div class="value" id="kpiScore">0 / 100</div><div class="small">Points earned</div></div></div>
+  <div class="col-6 col-xl-3"><div class="card kpi blue p-3"><div class="label">PERCENTAGE</div><div class="value" id="kpiPercent">0%</div><div class="small">Audit completion score</div></div></div>
+  <div class="col-6 col-xl-3"><div class="card kpi gold p-3"><div class="label">GRADE</div><div class="value" id="kpiGrade">D</div><div class="small">Overall grade</div></div></div>
+  <div class="col-6 col-xl-3"><div class="card kpi red p-3"><div class="label">RISK LEVEL</div><div class="value" id="kpiRisk">Critical</div><div class="small">Based on total score</div></div></div>
+ </div>
+ <div class="card p-3 mb-3">
+  <div class="d-flex justify-content-between align-items-center mb-2"><strong>Audit progress</strong><span class="small-muted" id="progressText">0% required fields completed</span></div>
+  <div class="progress"><div class="progress-bar" id="progressBar" style="width:0%;background:#1f7a46"></div></div>
+ </div>
+
+ <section class="card mb-3" id="farmDetails">
+  <div class="card-header py-3"><span class="section-title">01 · Farm and Visit Details</span></div>
+  <div class="card-body"><div class="row g-3">
+   <div class="col-md-4 col-lg-3"><label class="form-label required" for="region">Region</label><input class="form-control required-field" id="region" required></div>
+   <div class="col-md-4 col-lg-3"><label class="form-label required" for="branch">Branch</label><input class="form-control required-field" id="branch" required></div>
+   <div class="col-md-4 col-lg-3"><label class="form-label required" for="farmCode">Farm Code</label><input class="form-control required-field" id="farmCode" list="farmCodes" required autocomplete="off"><datalist id="farmCodes"></datalist></div>
+   <div class="col-md-6 col-lg-3"><label class="form-label required" for="farmName">Farm Name</label><input class="form-control required-field" id="farmName" required></div>
+   <div class="col-md-4 col-lg-3"><label class="form-label required" for="visitDate">Visit Date</label><input type="date" class="form-control required-field" id="visitDate" required></div>
+   <div class="col-md-4 col-lg-3"><label class="form-label" for="birdAge">Bird Age (Days)</label><input type="number" min="0" class="form-control" id="birdAge"></div>
+   <div class="col-md-4 col-lg-3"><label class="form-label" for="hatchDate">Hatch Date</label><input type="date" class="form-control" id="hatchDate"></div>
+   <div class="col-md-4 col-lg-3"><label class="form-label" for="birdsHoused">Birds Housed</label><input type="number" min="0" class="form-control" id="birdsHoused"></div>
+   <div class="col-md-6 col-lg-4"><label class="form-label required" for="auditorName">Auditor Name</label><input class="form-control required-field" id="auditorName" required></div>
+   <div class="col-md-6 col-lg-4"><label class="form-label" for="gpsCoordinates">GPS Coordinates</label><input class="form-control" id="gpsCoordinates" inputmode="decimal" placeholder="Tap Capture GPS or type: 11.123456, 77.123456"></div>
+  </div>
+  </div></div>
+ </section>
+
+ <section class="card mb-3">
+  <div class="card-header py-3"><span class="section-title">02 · Audit Checklist</span><div class="small-muted mt-1">Enter a score from 0 to the displayed maximum. Actual value is optional and may contain a measurement or observation.</div></div>
+  <div class="card-body">
+   <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3"><div class="small-muted">Category scores recalculate automatically.</div><button class="btn btn-outline-secondary btn-sm no-print" id="expandAll">Expand all categories</button></div>
+   <div class="accordion" id="checklistAccordion"></div>
+  </div>
+ </section>
+
+ <section class="card mb-3">
+  <div class="card-header py-3"><span class="section-title">03 · Production Performance Data</span></div>
+  <div class="card-body">
+   <div class="row g-3">
+    <div class="col-md-6 col-lg-3"><label class="form-label required" for="bmName">BM Name</label><input class="form-control required-field" id="bmName" required></div>
+    <div class="col-md-6 col-lg-3"><label class="form-label required" for="etsName">ETS Name</label><input class="form-control required-field" id="etsName" required></div>
+    <div class="col-md-6 col-lg-3"><label class="form-label" for="farmCapacity">Farm SQFT(birds)</label><input type="number" min="0" class="form-control performance" id="farmCapacity"></div>
+    <div class="col-md-6 col-lg-3"><label class="form-label" for="currentPlacement">Current Placement (birds)</label><input type="number" min="0" class="form-control performance" id="currentPlacement"></div>
+    <div class="col-md-6 col-lg-3"><label class="form-label" for="mortality">Mortality (%)</label><input type="number" min="0" max="100" step=".01" class="form-control performance" id="mortality"></div>
+    <div class="col-md-6 col-lg-3"><label class="form-label" for="fcr">FCR</label><input type="number" min="0" step=".01" class="form-control performance" id="fcr"></div>
+    <div class="col-md-6 col-lg-3"><label class="form-label" for="bodyWeight">Body Weight (kg)</label><input type="number" min="0" step=".001" class="form-control performance" id="bodyWeight"></div>
+    <div class="col-md-6 col-lg-3"><label class="form-label" for="feedIntake">Feed Intake (%)</label><input type="number" min="0" max="100" step=".01" class="form-control performance" id="feedIntake"></div>
+    <div class="col-md-6 col-lg-3"><label class="form-label" for="bodyWeightPercent">Body Weight (%)</label><input type="number" min="0" max="200" step=".01" class="form-control performance" id="bodyWeightPercent"></div>
+    <div class="col-md-6 col-lg-3"><label class="form-label" for="waterPh">Water pH</label><input type="number" min="0" max="14" step=".01" class="form-control performance" id="waterPh" placeholder="Acceptable 5.5–7.2"></div>
+    <div class="col-md-6 col-lg-3"><label class="form-label" for="waterTds">Water TDS (ppm)</label><input type="number" min="0" step="1" class="form-control performance" id="waterTds"></div>
+   </div>
+  </div>
+ </section>
+
+ <section class="card mb-3">
+  <div class="card-header py-3"><span class="section-title">04 · Findings and Feedback</span></div>
+  <div class="card-body row g-3">
+   <div class="col-lg-6"><label class="form-label" for="deviations">Major SOP Deviations</label><textarea class="form-control" id="deviations" rows="5" placeholder="Record major deviations, risk and evidence..."></textarea></div>
+   <div class="col-lg-6"><label class="form-label" for="positivePoints">Farm Positive Points</label><textarea class="form-control" id="positivePoints" rows="5" placeholder="Record good practices and positive observations..."></textarea></div>
+   <div class="col-12"><label class="form-label" for="recommendations">Corrective Actions / Recommendations</label><textarea class="form-control" id="recommendations" rows="3" placeholder="Recommended action, responsible person and target date..."></textarea></div>
+  </div>
+ </section>
+
+ <section class="card mb-3" id="evidenceSection">
+  <div class="card-header py-3"><span class="section-title">05 · Audit Evidence Photos</span><div class="small-muted mt-1">JPG/JPEG/PNG only · Maximum 5 MB per photo · Multiple photos allowed</div></div>
+  <div class="card-body"><div class="row g-3" id="photoUploadAreas"></div><div class="small-muted mt-3" id="photoCount">0 photos attached</div></div>
+ </section>
+
+ <section class="card mb-3">
+  <div class="card-header py-3"><span class="section-title">06 · Score Summary and Final Audit Status</span></div>
+  <div class="card-body">
+   <div class="row g-3">
+    <div class="col-6 col-lg-3"><div class="p-3 border rounded-3"><div class="small-muted">Total Points Earned</div><div class="fs-3 fw-bold" id="summaryScore">0 / 100</div></div></div>
+    <div class="col-6 col-lg-3"><div class="p-3 border rounded-3"><div class="small-muted">Audit Percentage</div><div class="fs-3 fw-bold" id="summaryPercent">0%</div></div></div>
+    <div class="col-6 col-lg-3"><div class="p-3 border rounded-3"><div class="small-muted">Audit Grade</div><div class="fs-3 fw-bold" id="summaryGrade">D</div></div></div>
+    <div class="col-6 col-lg-3"><div class="p-3 border rounded-3"><div class="small-muted">Risk Classification</div><div id="riskBadge" class="badge text-bg-danger badge-risk mt-2">Critical Risk</div></div></div>
+    <div class="col-md-6"><label class="form-label" for="auditResult">Audit Result</label><input class="form-control fw-bold" id="auditResult" readonly value="Poor"></div>
+    <div class="col-md-6"><label class="form-label" for="auditStatus">Submission Status</label><select class="form-select" id="auditStatus"><option>Draft</option><option>Submitted</option></select></div>
+   </div>
+   <div class="mt-3"><strong class="d-block mb-2">Category-wise score</strong><div id="categorySummary" class="row g-2"></div></div>
+  </div>
+ </section>
+
+ <section class="card mb-4">
+  <div class="card-header py-3"><span class="section-title">07 · Digital Signatures</span></div>
+  <div class="card-body"><div class="row g-4">
+   <div class="col-md-6"><label class="form-label">Auditor Signature</label><canvas id="auditorSignature" class="signature-box"></canvas><div class="d-flex gap-2 mt-2 no-print"><button type="button" class="btn btn-sm btn-outline-secondary" data-clear="auditorSignature">Clear</button><button type="button" class="btn btn-sm btn-outline-success" data-save="auditorSignature">Save signature</button><span class="small-muted align-self-center" id="auditorSignatureStatus">Not signed</span></div></div>
+   <div class="col-md-6"><label class="form-label">Farmer Signature</label><canvas id="farmerSignature" class="signature-box"></canvas><div class="d-flex gap-2 mt-2 no-print"><button type="button" class="btn btn-sm btn-outline-secondary" data-clear="farmerSignature">Clear</button><button type="button" class="btn btn-sm btn-outline-success" data-save="farmerSignature">Save signature</button><span class="small-muted align-self-center" id="farmerSignatureStatus">Not signed</span></div></div>
+  </div><div class="small-muted mt-3">Signatures are stored with this browser's local draft. Keep exported reports in a secure location.</div></div>
+ </section>
+ <div class="report-only small-muted mb-3">Generated by Broiler Farm SOP Audit · <span id="printGenerated"></span></div>
+</main>
+
+<div class="sticky-actions no-print">
+ <div class="container-fluid px-3 px-lg-4">
+  <div class="small-muted mb-2" id="saveStatus">Draft not saved yet</div>
+  <div class="d-flex flex-wrap gap-2">
+   <button class="btn btn-outline-secondary" id="saveDraftBtn">💾 Save Draft</button>
+   <button class="btn btn-brand" id="submitBtn">✅ Submit Audit</button>
+   <button class="btn btn-outline-danger" id="pdfBtn">⬇ Download PDF</button>
+   <label class="btn btn-outline-secondary mb-0" for="loadDraftInput">📂 Load Draft<input type="file" id="loadDraftInput" accept=".json,application/json" class="d-none"></label>
+   <button class="btn btn-outline-primary" id="printBtn">🖨 Print Report</button>
+   <button class="btn btn-outline-danger" id="resetBtn">Reset Form</button>
+  </div>
+  <div class="small-muted mt-2">Draft and submitted reports are saved to your device's <strong>Downloads</strong> folder (PDF for submitted audits, data file for drafts).</div>
+ </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.4/dist/jspdf.plugin.autotable.min.js"></script>
+<script>
+
+"use strict";
+
+const AUDIT_KEY="sugunaFarmAuditDraft_v1";
+
+const categories=[
+
+{name:"Shed Cleaning Process",max:15,items:[
+
+["Old litter Removal (1km away from farm)",1],["Whitewashing with proper dosage (Lime Stone + Formalin + Kerosin)",2],["Roof cleanliness",1],["Fumigation",1],["Pipeline Cleaning with proper dosage",2],["Tank Cleaning",1],["Equipment cleaning (Drinkers and Feeders)",1],["All Curtain washing",1],["Bulb, Fan, Side net, Ropes cleanliness",1],["Old mud removal and new mud Addition (2 inch level)",1],["Shed Cleaning medicine Usage as per Farm Sq. Ft.",1],["Cleanliness of Farm surrounding",1],["Fly and Beetle insect control practices followed",1]]},
+
+{name:"Brooding Farm",max:30,items:[
+
+["Chicks delivery hours Pullout to farm (10 hrs below)",1],["Brooding Temperature and Humidity",2],["Heat source and quantity",1],["Curtains: Ceiling, Inner, Cross and Outside",4],["Brooding Space per chick 0.3",1],["Brooding Arrangement: Round 350:1",1],["Litter Depth: 3 inches",3],["Lighting 100 Lux",1],["Chick drinker ratio 35:1",1],["Water pH and Chlorine level",2],["Turbo feeder ratio 35:1",1],["Drinker and Feeder height from Crop level",1],["Paper feeding (24 hrs) and Tyre feeding 7 days",2],["Alternate Light and Heat source",2],["1st day crop score and 1st week CV% and Uniformity",2],["Chicks Behaviour: Normal",1],["Fresh air Ventilation and Ammonia presence",2],["Vaccine and Medication schedule followed as per recommendation",2]]},
+
+{name:"Growing Farm",max:15,items:[
+
+["Curtain adjustment based on climate",1],["Litter Racking and Litter Condition",1],["Drinker cleanliness",1],["Water pH, TDS and Sanitation in the Drinker level",2],["Feeder Grill usage",1],["Feeder and Drinker ratio",2],["Feeder and Drinker height from crop level",2],["Space extension and Sq ft per chick",1],["Vaccination and Administration",1],["Bio security (Foot dip, Death pit, Animal and Wild birds restriction)",3]]},
+
+{name:"Later Age Farm",max:15,items:[
+
+["Bio security (Shed wise foot dip)",1],["Mortality verification (Photo or Phone call)",2],["Feed storage: Feed stand 2 ft and Feed bag height (5 per line)",2],["Feed bag stock and Numbering",1],["Fan implementation Quantity and Working status",1],["Foggers or Sprinkler usage",1],["Side panthal Permanent or Temporary",1],["Litter depth and Racking status",1],["Water pH and Chlorine level in Drinker level",2],["Feeder slot age wise management and feeder cone cleanliness",1],["Feed Intake Percentage vs Body Weight Percentage deviation",2]]},
+
+{name:"Farm Selection",max:15,items:[
+
+["Shed Direction East-West",1],["Farm Sq Ft System vs Actual",1],["Farm Width and Ventilation",1],["Water source and Water quality (pH & TDS)",2],["Shed Height from Ground Level Standard 2 ft",1],["Good Road facility",1],["Main gate and Fencing around farm",2],["Water tank 2 No's",2],["Water tank location and proper covering",1],["Watering system Auto drinker or Nipple",1],["Brooding sheet 350:1 and Partition 500:1",2]]},
+
+{name:"Farmer Feedback",max:10,items:[
+
+["Bird Lifting and Delay",1],["Mean age",1],["Feed Starvation and Feed delay Delivery",1],["Return feed through company or farmer arranged vehicle",1],["ETS visit and communication",1],["BM visit and Communication",1],["Weak sales",1],["Growing charges Satisfactory or Not",1],["Payment On-time or Delay",1],["Placement Gap days / Delay",1]]}
+
+];
+
+const photoTypes=["Farm Front View","Shed Interior","Brooding Area","Feed Storage Area","Water System","Biosecurity Area","Litter Condition","Observation Photos","SOP Deviations Photos","Corrective Action Photos"];
+
+const $=id=>document.getElementById(id);
+
+let photos={}, signatures={}, logoData=document.getElementById("companyLogo").src, gps={};
+
+const reportId="SFA-"+new Date().toISOString().slice(0,10).replaceAll("-","")+"-"+Math.random().toString(36).slice(2,6).toUpperCase();
+
+$("reportNo").textContent=reportId;
+
+$("headerDate").textContent=new Date().toLocaleString();
+
+$("visitDate").value=new Date().toISOString().slice(0,10);
+
+$("printGenerated").textContent=new Date().toLocaleString();
+
+
+
+function buildChecklist(){
+
+ const root=$("checklistAccordion");
+
+ categories.forEach((cat,ci)=>{
+
+  const id="cat"+ci;
+
+  const itemHtml=cat.items.map((item,ii)=>`<div class="check-row">
+
+   <div><div class="fw-semibold">${ii+1}. ${escapeHtml(item[0])}</div><div class="small-muted">Evaluation point</div></div>
+
+   <div><label class="small-muted d-block" for="score-${ci}-${ii}">Score</label><input type="number" class="form-control form-control-sm score-input score-field" id="score-${ci}-${ii}" data-ci="${ci}" data-ii="${ii}" min="0" max="${item[1]}" step="0.5" value="0" aria-label="Score for ${escapeHtml(item[0])}"></div>
+
+   <div><div class="small-muted">Max</div><div class="max-score">${item[1]}</div></div>
+
+   <div class="actual-wrap"><label class="small-muted" for="actual-${ci}-${ii}">Actual Value / Remarks</label><input class="form-control form-control-sm actual-field" id="actual-${ci}-${ii}" data-ci="${ci}" data-ii="${ii}" placeholder="Enter value or remark"></div>
+
+  </div>`).join("");
+
+  root.insertAdjacentHTML("beforeend",`<div class="accordion-item mb-2 rounded-3 overflow-hidden">
+
+   <h3 class="accordion-header"><button class="accordion-button ${ci===0?"":"collapsed"}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${id}" aria-expanded="${ci===0}">
+
+    <span class="flex-grow-1">${ci+1}. ${cat.name}</span><span class="cat-score me-3" id="catScore-${ci}">0 / ${cat.max}</span>
+
+   </button></h3><div id="collapse-${id}" class="accordion-collapse collapse ${ci===0?"show":""}" data-bs-parent="#checklistAccordion"><div class="accordion-body p-0">
+
+    <div class="check-row head"><div>Evaluation Point</div><div>Score</div><div>Maximum</div><div>Actual Value / Remarks</div></div>${itemHtml}
+
+   </div></div></div>`);
+
+ });
+
+}
+
+function buildPhotos(){
+
+ const root=$("photoUploadAreas");
+
+ photoTypes.forEach((type,i)=>{
+
+  root.insertAdjacentHTML("beforeend",`<div class="col-md-6 col-xl-4"><div class="border rounded-3 p-3 h-100">
+
+   <div class="fw-bold mb-2">${i+1}. ${type}</div><div class="dropzone no-print" data-drop="${i}"><div class="fs-4">＋</div><div>Tap or drop photos here</div><div class="small-muted">JPG, PNG · Max 5 MB each</div><input class="photo-input d-none" type="file" accept="image/jpeg,image/png" multiple data-photo="${i}" ${i===0?"capture=environment":""}></div>
+
+   <div class="photo-grid mt-2" id="photoGrid-${i}"></div>
+
+  </div></div>`);
+
+ });
+
+ root.querySelectorAll(".dropzone").forEach(zone=>{
+
+  zone.addEventListener("click",e=>{if(e.target.tagName!=="INPUT")zone.querySelector("input").click()});
+
+  zone.addEventListener("dragover",e=>{e.preventDefault();zone.style.background="#e1f4e5"});
+
+  zone.addEventListener("dragleave",()=>zone.style.background="");
+
+  zone.addEventListener("drop",e=>{e.preventDefault();zone.style.background="";addPhotos(Number(zone.dataset.drop),e.dataTransfer.files)});
+
+ });
+
+ root.querySelectorAll(".photo-input").forEach(inp=>inp.addEventListener("change",e=>{addPhotos(Number(inp.dataset.photo),e.target.files);inp.value=""}));
+
+}
+
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+
+function addPhotos(index,fileList){
+
+ if(!photos[index])photos[index]=[];
+
+ [...fileList].forEach(file=>{
+
+  if(!["image/jpeg","image/png"].includes(file.type)){alert(`${file.name}: Only JPG/JPEG/PNG files are accepted.`);return}
+
+  if(file.size>5*1024*1024){alert(`${file.name}: Photo exceeds 5 MB.`);return}
+
+  if(photos[index].length>=30){alert("Maximum 30 photos per evidence category.");return}
+
+  const reader=new FileReader();reader.onload=()=>{photos[index].push({name:file.name,data:reader.result,type:file.type});renderPhotos(index);updatePhotoCount()};reader.readAsDataURL(file);
+
+ });
+
+}
+
+function renderPhotos(index){
+
+ const grid=$("photoGrid-"+index);grid.innerHTML="";
+
+ (photos[index]||[]).forEach((p,j)=>grid.insertAdjacentHTML("beforeend",`<div class="photo-thumb"><img src="${p.data}" alt="${escapeHtml(p.name)}"><div class="small mt-1">${escapeHtml(p.name)}</div><button class="btn btn-sm btn-outline-danger w-100 mt-1 remove-photo no-print" data-pi="${index}" data-pj="${j}">Remove</button></div>`));
+
+ grid.querySelectorAll(".remove-photo").forEach(b=>b.addEventListener("click",()=>{photos[index].splice(Number(b.dataset.pj),1);renderPhotos(index);updatePhotoCount()}));
+
+}
+
+function updatePhotoCount(){const n=Object.values(photos).reduce((a,b)=>a+b.length,0);$("photoCount").textContent=`${n} photo${n===1?"":"s"} attached across ${Object.values(photos).filter(a=>a.length).length} evidence categories`}
+
+function setupSignatures(){
+
+ ["auditorSignature","farmerSignature"].forEach(id=>{
+
+  const canvas=$(id),ctx=canvas.getContext("2d");let drawing=false,hasInk=false;
+
+  function resize(){const old=hasInk?canvas.toDataURL():null;const rect=canvas.getBoundingClientRect();canvas.width=Math.max(1,rect.width*devicePixelRatio);canvas.height=Math.max(1,rect.height*devicePixelRatio);ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);ctx.lineWidth=2;ctx.lineCap="round";ctx.lineJoin="round";ctx.strokeStyle="#18231c";if(old){const im=new Image();im.onload=()=>ctx.drawImage(im,0,0,rect.width,rect.height);im.src=old}}
+
+  resize();window.addEventListener("resize",()=>{if(!hasInk)resize()});
+
+  function point(e){const r=canvas.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top}}
+
+  canvas.addEventListener("pointerdown",e=>{drawing=true;canvas.setPointerCapture(e.pointerId);const p=point(e);ctx.beginPath();ctx.moveTo(p.x,p.y);e.preventDefault()});
+
+  canvas.addEventListener("pointermove",e=>{if(!drawing)return;const p=point(e);ctx.lineTo(p.x,p.y);ctx.stroke();hasInk=true;$(`${id}Status`).textContent="Signature drawn";e.preventDefault()});
+
+  const stop=()=>{if(drawing){drawing=false;if(hasInk)signatures[id]=canvas.toDataURL("image/png")}};canvas.addEventListener("pointerup",stop);canvas.addEventListener("pointercancel",stop);
+
+  canvas.dataset.ready="1";
+
+ });
+
+ document.querySelectorAll("[data-clear]").forEach(b=>b.addEventListener("click",()=>{const id=b.dataset.clear,c=$(id),ctx=c.getContext("2d");ctx.clearRect(0,0,c.width,c.height);signatures[id]="";$(`${id}Status`).textContent="Not signed"}));
+
+ document.querySelectorAll("[data-save]").forEach(b=>b.addEventListener("click",()=>{const id=b.dataset.save;signatures[id]=$(id).toDataURL("image/png");$(`${id}Status`).textContent="Signature saved"}));
+
+}
+
+function calculate(){
+
+ let total=0,maximum=0,done=0;
+
+ categories.forEach((cat,ci)=>{let sum=0;cat.items.forEach((it,ii)=>{const input=$(`score-${ci}-${ii}`);let val=Number(input.value||0);if(val<0)val=0;if(val>it[1])val=it[1];if(input.value!==""&&Number(input.value)!==val)input.value=val;sum+=val;maximum+=it[1]});total+=sum;$(`catScore-${ci}`).textContent=`${sum} / ${cat.max}`;if(sum===cat.max)done++});
+
+ const pct=maximum?total/maximum*100:0;const rounded=Math.round(pct*10)/10;
+
+ const grade=pct>=95?"A+":pct>=90?"A":pct>=80?"B":pct>=70?"C":"D";
+
+ const risk=pct>=90?"Low Risk":pct>=80?"Moderate Risk":pct>=70?"High Risk":"Critical Risk";
+
+ const result=pct>=95?"Excellent":pct>=80?"Good":pct>=70?"Average":"Poor";
+
+ $("kpiScore").textContent=`${fmt(total)} / ${maximum}`;$("kpiPercent").textContent=rounded+"%";$("kpiGrade").textContent=grade;$("kpiRisk").textContent=risk;
+
+ $("summaryScore").textContent=`${fmt(total)} / ${maximum}`;$("summaryPercent").textContent=rounded+"%";$("summaryGrade").textContent=grade;$("auditResult").value=result;
+
+ const badge=$("riskBadge");badge.textContent=risk;badge.className="badge badge-risk mt-2 "+(pct>=90?"text-bg-success":pct>=80?"text-bg-warning":pct>=70?"text-bg-warning":"text-bg-danger");
+
+ $("categorySummary").innerHTML=categories.map((c,i)=>{const s=Number($(`catScore-${i}`).textContent.split("/")[0].trim());return `<div class="col-md-6 col-xl-4"><div class="border rounded-3 p-2"><div class="d-flex justify-content-between gap-2"><span class="small">${escapeHtml(c.name)}</span><strong>${fmt(s)} / ${c.max}</strong></div><div class="progress mt-2"><div class="progress-bar" style="width:${s/c.max*100}%;background:#23834b"></div></div></div></div>`}).join("");
+
+ const req=[...document.querySelectorAll(".required-field")];const filled=req.filter(x=>x.value.trim()).length;const progress=Math.round(filled/req.length*100);$("progressBar").style.width=progress+"%";$("progressText").textContent=`${progress}% required fields completed`;
+
+ updatePerformance();return {total,maximum,pct:rounded,grade,risk,result};
+
+}
+
+function fmt(n){return Number(n.toFixed(2)).toLocaleString("en-IN",{maximumFractionDigits:2})}
+
+function updatePerformance(){
+ const el=$("waterPh");const v=el.value===""?null:Number(el.value);
+ el.classList.toggle("is-invalid",v!==null&&(v<5.5||v>7.2));
+}
+
+function restoreData(data){
+
+ if(!data)return;
+
+ Object.entries(data.fields||{}).forEach(([id,val])=>{const el=$(id);if(el)el.value=val});
+
+ if(data.checklist)data.checklist.forEach((cat,ci)=>cat.items.forEach((it,ii)=>{const s=$(`score-${ci}-${ii}`),a=$(`actual-${ci}-${ii}`);if(s)s.value=it.score;if(a)a.value=it.actualValue||""}));
+
+ photos=data.photos||{};Object.keys(photos).forEach(k=>renderPhotos(Number(k)));updatePhotoCount();
+
+ signatures=data.signatures||{};Object.entries(signatures).forEach(([id,src])=>{if(src){const im=new Image();im.onload=()=>{const c=$(id),ctx=c.getContext("2d");ctx.drawImage(im,0,0,c.clientWidth,c.clientHeight)};im.src=src;$(`${id}Status`).textContent="Signature restored"}});
+
+ gps=data.gps||{};if(gps.coords)$("gpsCoordinates").value=gps.coords;
+
+ calculate();
+
+}
+
+function validateForm(){
+
+ let first=null;
+
+ document.querySelectorAll(".required-field").forEach(el=>{el.classList.remove("is-invalid");if(!el.value.trim()){el.classList.add("is-invalid");if(!first)first=el}});
+
+ document.querySelectorAll(".score-field").forEach(el=>{el.classList.remove("is-invalid");const max=Number(el.max),v=Number(el.value);if(el.value===""||!Number.isFinite(v)||v<0||v>max){el.classList.add("is-invalid");if(!first)first=el}});
+
+ if(first){first.scrollIntoView({behavior:"smooth",block:"center"});first.focus({preventScroll:true});alert("Please complete all required fields and enter valid scores (0 to the maximum for each checklist item) before submitting or exporting.");return false}
+
+ return true;
+
+}
+
+function collectData(){
+ const fields={};
+ document.querySelectorAll("input[id],select[id],textarea[id]").forEach(el=>{
+  if(el.type==="file"||/^(score|actual)-/.test(el.id))return;
+  fields[el.id]=el.value;
+ });
+ const checklist=categories.map((cat,ci)=>({category:cat.name,items:cat.items.map((it,ii)=>({evaluationPoint:it[0],score:Number($(`score-${ci}-${ii}`).value)||0,maximum:it[1],actualValue:$(`actual-${ci}-${ii}`).value}))}));
+ const g=Object.assign({},gps,{coords:fields.gpsCoordinates||""});
+ return {version:1,reportId,generatedAt:new Date().toLocaleString(),fields,checklist,summary:calculate(),photos,signatures,gps:g};
+}
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+function stamp(){const n=new Date(),z=x=>String(x).padStart(2,"0");return z(n.getHours())+z(n.getMinutes())+z(n.getSeconds())}
+async function saveDraft(show=true,tag="DRAFT"){
+ let data;try{data=collectData()}catch(e){alert("Could not read the form: "+e.message);return false}
+ try{localStorage.setItem(AUDIT_KEY,JSON.stringify(data))}catch(e){}
+ try{
+  await downloadBlob(new Blob([JSON.stringify(data)],{type:"application/json"}),fileBase()+"_"+tag+"_"+stamp()+".json");
+  $("saveStatus").textContent=tag+" file saved to Downloads at "+new Date().toLocaleTimeString();
+  if(show)alert("Draft saved to your Downloads folder. To continue later, tap 'Load Draft' and choose that file.");
+  return true;
+ }catch(e){$("saveStatus").textContent="Could not save draft file";if(show)alert("Could not save the draft file: "+e.message);return false}
+}
+async function downloadBlob(blob,name){
+ const url=URL.createObjectURL(blob);
+ try{
+  const a=document.createElement("a");a.href=url;a.download=name;a.rel="noopener";a.style.display="none";
+  document.body.appendChild(a);a.click();
+  setTimeout(()=>{a.remove();URL.revokeObjectURL(url)},60000);
+ }catch(e){
+  try{const f=new File([blob],name,{type:blob.type});if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:name});return}}catch(_){}
+  window.open(url,"_blank");
+ }
+}
+
+function fileBase(){const code=$("farmCode").value.trim()||"FarmCode",name=$("farmName").value.trim()||"FarmName",date=$("visitDate").value||new Date().toISOString().slice(0,10);return "FarmAudit_"+safeName(code)+"_"+safeName(name)+"_"+safeName(date)}
+
+function safeName(s){return String(s).replace(/[^a-z0-9_-]+/gi,"_").replace(/^_+|_+$/g,"")||"NA"}
+
+async function exportPDF(skipValidate){
+
+ if(!skipValidate&&!validateForm())return false;
+
+ if(!window.jspdf?.jsPDF){alert("PDF library did not load. Connect to the internet once and reload the page.");return false}
+
+ const d=collectData(),{jsPDF}=window.jspdf,doc=new jsPDF({orientation:"portrait",unit:"mm",format:"a4"});
+
+ const margin=14,pageW=doc.internal.pageSize.getWidth(),pageH=doc.internal.pageSize.getHeight();let y=15;
+
+ const ensure=(h=10)=>{if(y+h>pageH-15){doc.addPage();y=15}};
+
+ const line=(label,value)=>{ensure(7);doc.setFont("helvetica","bold");doc.text(String(label)+":",margin,y);doc.setFont("helvetica","normal");const txt=doc.splitTextToSize(String(value??"—"),pageW-margin*2-40);doc.text(txt,margin+40,y);y+=Math.max(6,txt.length*4.5)};
+
+ if(logoData){try{doc.addImage(logoData,"PNG",margin,y-3,22,15)}catch(e){}}
+
+ doc.setFont("helvetica","bold");doc.setFontSize(15);doc.text("SUGUNA FOODS PVT LTD",logoData?margin+27:margin,y+2);doc.setFontSize(11);doc.text("Broiler Farm SOP Audit",logoData?margin+27:margin,y+9);y+=22;
+
+ doc.setFontSize(9);doc.setFont("helvetica","normal");line("Report Number",reportId);line("Generated At",new Date().toLocaleString());
+
+ doc.autoTable({startY:y,head:[["Farm / Visit Details","Value"]],body:[["Region",d.fields.region],["Branch",d.fields.branch],["Farm Code",d.fields.farmCode],["Farm Name",d.fields.farmName],["Visit Date",d.fields.visitDate],["Bird Age (Days)",d.fields.birdAge||"—"],["Hatch Date",d.fields.hatchDate||"—"],["Birds Housed",d.fields.birdsHoused||"—"],["Auditor Name",d.fields.auditorName],["GPS Coordinates",d.fields.gpsCoordinates||"—"]],theme:"grid",styles:{fontSize:8,cellPadding:2},headStyles:{fillColor:[20,83,45]},margin:{left:margin,right:margin}});
+
+ y=doc.lastAutoTable.finalY+7;ensure(30);doc.setFont("helvetica","bold");doc.setFontSize(12);doc.text("Audit Summary",margin,y);y+=5;
+
+ doc.autoTable({startY:y,head:[["Total Points","Maximum","Percentage","Grade","Risk","Result"]],body:[[d.summary.total,d.summary.maximum,d.summary.pct+"%",d.summary.grade,d.summary.risk,d.summary.result]],theme:"grid",styles:{fontSize:8,cellPadding:2},headStyles:{fillColor:[20,83,45]},margin:{left:margin,right:margin}});
+
+ y=doc.lastAutoTable.finalY+6;
+
+ doc.autoTable({startY:y,head:[["Category","Points Earned","Maximum"]],body:categories.map((c,i)=>[c.name,Number($(`catScore-${i}`).textContent.split("/")[0].trim()),c.max]),theme:"grid",styles:{fontSize:8,cellPadding:2},headStyles:{fillColor:[20,83,45]},margin:{left:margin,right:margin}});
+
+ y=doc.lastAutoTable.finalY+6;ensure(25);doc.setFontSize(11);doc.setFont("helvetica","bold");doc.text("Production Performance Data",margin,y);y+=3;
+
+ doc.autoTable({startY:y,head:[["Parameter","Value","Parameter","Value"]],body:[["BM Name",d.fields.bmName,"ETS Name",d.fields.etsName],["Farm SqFt",d.fields.farmCapacity,"Current Placement",d.fields.currentPlacement],["Mortality %",d.fields.mortality,"FCR",d.fields.fcr],["Body Weight (kg)",d.fields.bodyWeight,"Feed Intake %",d.fields.feedIntake],["Body Weight %",d.fields.bodyWeightPercent,"Water pH",d.fields.waterPh],["Water TDS (ppm)",d.fields.waterTds,"",""]],theme:"grid",styles:{fontSize:7.5,cellPadding:2},headStyles:{fillColor:[20,83,45]},margin:{left:margin,right:margin}});
+
+ y=doc.lastAutoTable.finalY+7;ensure(20);doc.setFontSize(11);doc.setFont("helvetica","bold");doc.text("Findings and Recommendations",margin,y);y+=5;
+
+ for(const [label,value] of [["Major SOP Deviations",d.fields.deviations],["Farm Positive Points",d.fields.positivePoints],["Corrective Actions / Recommendations",d.fields.recommendations]]){ensure(18);doc.setFont("helvetica","bold");doc.setFontSize(9);doc.text(label,margin,y);y+=4;doc.setFont("helvetica","normal");const lines=doc.splitTextToSize(value||"—",pageW-margin*2);doc.text(lines,margin,y);y+=lines.length*4+4}
+
+ ensure(20);doc.setFont("helvetica","bold");doc.setFontSize(11);doc.text("Digital Signatures",margin,y);y+=4;
+
+ for(const [label,id] of [["Auditor Signature","auditorSignature"],["Farmer Signature","farmerSignature"]]){ensure(23);doc.setFontSize(9);doc.text(label,margin,y+5);if(signatures[id]){try{doc.addImage(signatures[id],"PNG",margin+40,y-2,45,15)}catch(e){}}else{doc.setDrawColor(150);doc.line(margin+40,y+12,margin+90,y+12)}y+=20}
+
+ for(let i=0;i<photoTypes.length;i++){const list=photos[i]||[];if(!list.length)continue;doc.addPage();y=15;doc.setFont("helvetica","bold");doc.setFontSize(12);doc.text(photoTypes[i],margin,y);y+=6;for(const p of list){ensure(62);try{const props=doc.getImageProperties(p.data);const w=Math.min(85,pageW-margin*2),h=Math.min(50,w*props.height/props.width);doc.addImage(p.data,p.type==="image/png"?"PNG":"JPEG",margin,y,w,h);y+=h+3;doc.setFont("helvetica","normal");doc.setFontSize(8);doc.text(doc.splitTextToSize(p.name,pageW-margin*2),margin,y);y+=8}catch(e){doc.setFontSize(8);doc.text("Could not embed image: "+p.name,margin,y);y+=6}}}
+
+ const pages=doc.getNumberOfPages();for(let p=1;p<=pages;p++){doc.setPage(p);doc.setFontSize(7);doc.setTextColor(90);doc.text("Generated by Broiler Farm SOP Audit · "+new Date().toLocaleString(),margin,pageH-7);doc.text(`Page ${p} of ${pages}`,pageW-margin,pageH-7,{align:"right"})}
+
+ await downloadBlob(doc.output("blob"),fileBase()+".pdf");return true;
+
+}
+
+buildChecklist();buildPhotos();setupSignatures();calculate();
+
+document.querySelectorAll(".score-field").forEach(el=>el.addEventListener("input",calculate));
+
+document.querySelectorAll(".actual-field").forEach(el=>el.addEventListener("input",()=>{}));
+
+document.querySelectorAll(".performance,.required-field").forEach(el=>el.addEventListener("input",calculate));
+
+$("expandAll").addEventListener("click",()=>{const nodes=[...document.querySelectorAll(".accordion-collapse")],open=nodes.some(n=>!n.classList.contains("show"));nodes.forEach(n=>bootstrap.Collapse.getOrCreateInstance(n,{toggle:false})[open?"show":"hide"]());$("expandAll").textContent=open?"Collapse all categories":"Expand all categories"});
+
+$("gpsBtn").addEventListener("click",()=>{
+ const st=$("gpsStatus"),out=$("gpsCoordinates");
+ if(!navigator.geolocation){st.textContent="GPS not supported here. Type coordinates manually.";out.focus();return}
+ st.textContent="Getting location… (keep phone GPS on)";
+ const ok=pos=>{const c=pos.coords;gps={latitude:c.latitude,longitude:c.longitude,accuracy:c.accuracy,coords:c.latitude.toFixed(6)+", "+c.longitude.toFixed(6)};out.value=gps.coords;st.textContent="Location captured (±"+Math.round(c.accuracy)+" m)"};
+ const fail=e=>{
+  const msg=e.code===1?"Location blocked. Allow Location for this browser (site settings) and turn on phone GPS. If this page was opened from a file manager, open it in Chrome from an https link, or type the coordinates manually.":e.code===3?"Location timed out. Move to an open area and try again, or type coordinates manually.":"Location unavailable. Turn on phone GPS and try again, or type coordinates manually.";
+  st.textContent=msg;out.focus();
+ };
+ navigator.geolocation.getCurrentPosition(ok,e=>{
+  if(e.code===2||e.code===3){navigator.geolocation.getCurrentPosition(ok,fail,{enableHighAccuracy:false,timeout:20000,maximumAge:300000})}else fail(e);
+ },{enableHighAccuracy:true,timeout:15000,maximumAge:0});
+});
+
+
+$("gpsCoordinates").addEventListener("input",()=>{gps.coords=$("gpsCoordinates").value});
+$("themeToggle").addEventListener("click",()=>{document.body.classList.toggle("dark");$("themeToggle").textContent=document.body.classList.contains("dark")?"☀️ Light mode":"🌙 Dark mode"});
+
+$("saveDraftBtn").addEventListener("click",()=>saveDraft(true));
+
+$("submitBtn").addEventListener("click",async()=>{
+ if(!validateForm())return;
+ const btns=document.querySelectorAll(".sticky-actions button");btns.forEach(b=>b.disabled=true);
+ try{
+  $("auditStatus").value="Submitted";
+  $("saveStatus").textContent="Submitting… saving PDF to Downloads";
+  const ok=await exportPDF(true);
+  try{localStorage.setItem(AUDIT_KEY,JSON.stringify(collectData()))}catch(e){}
+  if(ok){$("saveStatus").textContent="Submitted at "+new Date().toLocaleTimeString()+" · PDF saved to Downloads";alert("Audit submitted. The PDF report was saved to your Downloads folder.")}
+ }catch(e){alert("Submit failed: "+e.message)}
+ finally{btns.forEach(b=>b.disabled=false)}
+});
+
+$("pdfBtn").addEventListener("click",()=>exportPDF());
+$("loadDraftInput").addEventListener("change",e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);restoreData(d);$("saveStatus").textContent="Draft loaded: "+f.name;alert("Draft loaded. You can continue the entry.")}catch(err){alert("This file is not a valid draft file.")}};r.readAsText(f);e.target.value=""});$("printBtn").addEventListener("click",()=>{if(!validateForm())return;window.print()});
+
+$("resetBtn").addEventListener("click",()=>{if(!confirm("Reset the form and remove the saved local draft? This cannot be undone."))return;localStorage.removeItem(AUDIT_KEY);location.reload()});
+
+let farmCodeList=[];$("farmCode").addEventListener("change",()=>{const v=$("farmCode").value.trim();if(v&&!farmCodeList.includes(v)){farmCodeList.push(v);$("farmCodes").innerHTML=farmCodeList.map(x=>`<option value="${escapeHtml(x)}"></option>`).join("")}});
+
+try{const saved=localStorage.getItem(AUDIT_KEY);if(saved){restoreData(JSON.parse(saved));$("saveStatus").textContent="Previous local draft restored";}}catch(e){console.warn("Draft restore failed",e)}
+
+setInterval(()=>{try{const d=collectData();localStorage.setItem(AUDIT_KEY,JSON.stringify(d));$("saveStatus").textContent="Auto-saved at "+new Date().toLocaleTimeString()}catch(e){$("saveStatus").textContent="Auto-save skipped: storage limit reached"}},30000);
+
+window.addEventListener("beforeunload",()=>{try{localStorage.setItem(AUDIT_KEY,JSON.stringify(collectData()))}catch(e){}});
+
+if("serviceWorker" in navigator&&location.protocol.startsWith("http")){window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))}
+</script>
+</body>
+</html>
